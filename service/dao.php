@@ -21,6 +21,7 @@ class dao {
     // Open mysql database connection
     public function open_db() {
         $this->connect_database = new mysqli($this->host, $this->user, $this->pass, $this->db);
+
         if ($this->connect_database->connect_error) {
             die("Error in connection: " . $this->connect_database->connect_error);
         }
@@ -31,6 +32,7 @@ class dao {
     }
     // Select users.
     public function selectUsers() {
+
         $users = array();
 
         try {
@@ -55,6 +57,7 @@ class dao {
     }
     // Select advertisements with users names.
     public function selectAdvertisements() {
+
         $advertisements = array();
 
         try {

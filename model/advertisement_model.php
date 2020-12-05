@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * @property  id
  * @property  userId
