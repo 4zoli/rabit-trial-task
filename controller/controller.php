@@ -1,6 +1,6 @@
 <?php
-    require 'model/advertisement_model.php';
     require 'model/user_model.php';
+    require 'service/dao.php';
 
     require_once 'config.php';
 
@@ -10,10 +10,10 @@
 	{
 
  		function __construct() 
-		{          
+		{
 			$this->objconfig = new config();
-			$this->obj_user_model =  new usermodel($this->objconfig);
-            $this->obj_adv_model =  new advertisement_model($this->objconfig);
+			$this->dao = new dao($this->objconfig);
+
 		}
         // mvc handler request
 		public function mvcHandler() 
@@ -29,7 +29,7 @@
 					break;
 				default:
 			}
-		}		
+		}
         // page redirection
 		public function pageRedirect($url)
 		{
@@ -54,12 +54,12 @@
         }
         // List users from db.
         public function list_users(){
-            $result=$this->obj_user_model->selectUsers(0);
+            $result=$this->dao->selectUsers(0);
             include "view/user_list.php";
         }
         // List advertisements from db.
         public function list_advertisements(){
-            $result=$this->obj_adv_model->selectAdvertisements(0);
+            $result=$this->dao->selectAdvertisements(0);
             include "view/advertisement_list.php";
         }
     }
