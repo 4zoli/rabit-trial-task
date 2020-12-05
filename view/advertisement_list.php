@@ -34,28 +34,26 @@
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Advertisements</h2>
                     </div>
-                    <?php
-                        if($result->num_rows > 0){
+                    <?php ;
+                        if(sizeof($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>#</th>";                                        
-                                        echo "<th>User</th>";
-                                        echo "<th>Advertisement</th>";
+                                        echo "<th>#</th>";
+                                        echo "<th>User Name</th>";
+                                        echo "<th>Title</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";                                        
-                                        echo "<td>" . $row['userId'] . "</td>";
-                                        echo "<td>" . $row['title'] . "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
+                                    for ($i = 0; $i < sizeof($result); $i++) {
+                                        echo "<tr>";
+                                            echo "<td>" . $result[$i]->id . "</td>";
+                                            echo "<td>" . $result[$i]->userId. "</td>";
+                                            echo "<td>" . $result[$i]->title. "</td>";
+                                        echo "</tr>";
+                                    }
+                                echo "</tbody>";
                             echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result);
                         } else{
                             echo "<p class='lead'><em>No records were found.</em></p>";
                         }

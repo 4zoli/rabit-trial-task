@@ -1,5 +1,5 @@
 <?php
-
+    require 'model/user_model.php';
     require 'model/advertisement_model.php';
 
     class dao
@@ -28,18 +28,27 @@
             $this->condb->close();
         }
 
-        // Select users
+        // Select Users
         public function selectUsers()
         {
+            $users = array();
+
             try
             {
                 $this->open_db();
                 $query=$this->condb->prepare("SELECT * FROM users");
                 $query->execute();
                 $res=$query->get_result();
+
+                while ($row = $res->fetch_assoc()) {
+                    $users[] = new user_model($row['id'], $row['name']);
+                }
+
+                print_r($users);
+
                 $query->close();
                 $this->close_db();
-                return $res;
+                return $users;
             }
             catch(Exception $e)
             {
@@ -51,15 +60,24 @@
         // Select advertisements
         public function selectAdvertisements()
         {
+            $advertisements = array();
+
             try
             {
                 $this->open_db();
                 $query=$this->condb->prepare("SELECT * FROM advertisements");
                 $query->execute();
                 $res=$query->get_result();
+
+                while ($row = $res->fetch_assoc()) {
+                    $advertisements[] = new advertisement_model($row['id'], $row['userId'], $row['title']);
+                }
+
+                print_r($advertisements);
+
                 $query->close();
                 $this->close_db();
-                return $res;
+                return $advertisements;
             }
             catch(Exception $e)
             {
