@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="page-header clearfix">
                     <a href="index.php?act=users" class="btn btn-success pull-left">Users</a>
-                    <h2 class="pull-left">PHP MVC DEMO</h2>
+                    <h2 class="pull-left">RabIT-Trial-Task</h2>
                     <a href="index.php?act=advertisements" class="btn btn-success pull-right">Advertisements</a>
                 </div>
             </div>

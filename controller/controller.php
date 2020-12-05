@@ -29,14 +29,15 @@
 			}
 		}
 
-        // List users from db.
+        // List users from users db.
         public function list_users(){
-            $result=$this->dao->selectUsers();
+ 		    $result = $this->dao->selectUsers();
             include "view/user_list.php";
         }
-        // List advertisements from db.
+
+        // List advertisements from advertisements db with user names.
         public function list_advertisements(){
-            $result=$this->dao->selectAdvertisements();
+ 		    $result = $this->dao->selectAdvertisements();
             include "view/advertisement_list.php";
         }
     }

@@ -13,7 +13,7 @@
             $this->db = $consetup->db;
         }
 
-        // Open mysql data base connection
+        // Open mysql database connection
         public function open_db()
         {
             $this->condb = new mysqli($this->host, $this->user, $this->pass, $this->db);
@@ -28,7 +28,7 @@
             $this->condb->close();
         }
 
-        // Select Users
+        // Select users.
         public function selectUsers()
         {
             $users = array();
@@ -44,20 +44,21 @@
                     $users[] = new user_model($row['id'], $row['name']);
                 }
 
-                print_r($users);
-
                 $query->close();
-                $this->close_db();
+
                 return $users;
             }
             catch(Exception $e)
             {
-                $this->close_db();
                 throw $e;
+            }
+            finally
+            {
+                $this->close_db();
             }
         }
 
-        // Select advertisements
+        // Select advertisements with users names.
         public function selectAdvertisements()
         {
             $advertisements = array();
@@ -65,24 +66,25 @@
             try
             {
                 $this->open_db();
-                $query=$this->condb->prepare("SELECT * FROM advertisements");
+                $query=$this->condb->prepare("SELECT advertisements.id, users.name, advertisements.title FROM advertisements INNER JOIN users ON advertisements.userId = users.id");
                 $query->execute();
                 $res=$query->get_result();
 
                 while ($row = $res->fetch_assoc()) {
-                    $advertisements[] = new advertisement_model($row['id'], $row['userId'], $row['title']);
+                    $advertisements[] = new advertisement_model($row['id'], $row['name'], $row['title']);
                 }
 
-                print_r($advertisements);
-
                 $query->close();
-                $this->close_db();
+
                 return $advertisements;
             }
             catch(Exception $e)
             {
-                $this->close_db();
                 throw $e;
+            }
+            finally
+            {
+                $this->close_db();
             }
         }
 
