@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link href="~/../libs/fontawesome/css/font-awesome.css" rel="stylesheet" />
+    <title>RabIT-Trial-Task</title>
     <link rel="stylesheet" href="~/../libs/bootstrap.css">
     <script src="~/../libs/jquery.min.js"></script>
     <script src="~/../libs/bootstrap.js"></script>
@@ -19,11 +18,6 @@
             margin-right: 15px;
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
 </head>
 <body>
 <div class="wrapper">
