@@ -31,12 +31,12 @@
 
         // List users from db.
         public function list_users(){
-            $result=$this->dao->selectUsers(0);
+            $result=$this->dao->selectUsers();
             include "view/user_list.php";
         }
         // List advertisements from db.
         public function list_advertisements(){
-            $result=$this->dao->selectAdvertisements(0);
+            $result=$this->dao->selectAdvertisements();
             include "view/advertisement_list.php";
         }
     }

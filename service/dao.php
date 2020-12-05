@@ -4,7 +4,7 @@
 
     class dao
     {
-        // set database config for mysql
+        // Set database config for mysql
         function __construct($consetup)
         {
             $this->host = $consetup->host;
@@ -13,7 +13,7 @@
             $this->db = $consetup->db;
         }
 
-        // open mysql data base
+        // Open mysql data base connection
         public function open_db()
         {
             $this->condb = new mysqli($this->host, $this->user, $this->pass, $this->db);
@@ -22,26 +22,19 @@
             }
         }
 
-        // close database
+        // Close database connection
         public function close_db()
         {
             $this->condb->close();
         }
 
-        // select users
-        public function selectUsers($id)
+        // Select users
+        public function selectUsers()
         {
             try
             {
                 $this->open_db();
-                if($id>0)
-                {
-                    $query=$this->condb->prepare("SELECT * FROM users WHERE id=?");
-                    $query->bind_param("i",$id);
-                }
-                else
-                {$query=$this->condb->prepare("SELECT * FROM users");	}
-
+                $query=$this->condb->prepare("SELECT * FROM users");
                 $query->execute();
                 $res=$query->get_result();
                 $query->close();
@@ -55,20 +48,13 @@
             }
         }
 
-        // select advertisements
-        public function selectAdvertisements($id)
+        // Select advertisements
+        public function selectAdvertisements()
         {
             try
             {
                 $this->open_db();
-                if($id>0)
-                {
-                    $query=$this->condb->prepare("SELECT * FROM advertisements WHERE id=?");
-                    $query->bind_param("i",$id);
-                }
-                else
-                {$query=$this->condb->prepare("SELECT * FROM advertisements");	}
-
+                $query=$this->condb->prepare("SELECT * FROM advertisements");
                 $query->execute();
                 $res=$query->get_result();
                 $query->close();
