@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
     <div class="wrapper">
@@ -12,7 +13,7 @@
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Users</h2>
                     </div>
-                    <?php ;
+                    <?php
                         if(sizeof($result) > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";

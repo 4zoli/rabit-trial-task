@@ -3,31 +3,21 @@
     require 'service/dao.php';
 
     session_status() === PHP_SESSION_ACTIVE ? TRUE : session_start();
-    
-	class controller
-	{
-        // Creates the default configs and pass them to the dao object.
-        /**
-         * @var config
-         */
-        private $object_config;
-        /**
-         * @var dao
-         */
-        private $dao;
 
-        function __construct() 
-		{
+/**
+ * @property config object_config
+ * @property dao dao
+ */
+class controller {
+        // Creates the default configs and pass them to the dao object.
+        function __construct() {
 			$this->object_config = new config();
 			$this->dao = new dao($this->object_config);
-
 		}
         // Handling requests from index.php
-		public function requestHandler()
-		{
+		public function requestHandler() {
 			$act = isset($_GET['act']) ? $_GET['act'] : NULL;
-			switch ($act) 
-			{
+			switch ($act) {
                 case 'users' :
 					$this->list_users();
 					break;						
@@ -37,23 +27,23 @@
 				default:
 			}
 		}
-
-        // List users from users db.
-        public function list_users(){
+        // List users from users table.
+        public function list_users() {
             try {
                 @
                 $result = $this->dao->selectUsers();
             } catch (Exception $e) {
+                echo "Something went wrong";
             }
             include "view/user_list.php";
         }
-
-        // List advertisements from advertisements db with user names.
-        public function list_advertisements(){
+        // List advertisements from advertisements table with user names.
+        public function list_advertisements() {
             try {
                 @
                 $result = $this->dao->selectAdvertisements();
             } catch (Exception $e) {
+                echo "Something went wrong";
             }
             include "view/advertisement_list.php";
         }

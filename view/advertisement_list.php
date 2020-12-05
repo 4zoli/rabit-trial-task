@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title></title>
 </head>
 <body>
     <div class="wrapper">
@@ -12,8 +13,8 @@
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Advertisements</h2>
                     </div>
-                    <?php ;
-                        if(sizeof($result) > 0){
+                    <?php
+                        if(sizeof($result) > 0) {
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
@@ -32,7 +33,7 @@
                                     }
                                 echo "</tbody>";
                             echo "</table>";
-                        } else{
+                        } else {
                             echo "<p class='lead'><em>No records were found.</em></p>";
                         }
                     ?>
