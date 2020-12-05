@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^rabit-trial-task/advertisements /rabit-trial-task/index.php?act=advertisements
+RewriteRule ^rabit-trial-task/users /rabit-trial-task/index.php?act=users
+
+
