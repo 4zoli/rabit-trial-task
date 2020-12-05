@@ -7,10 +7,19 @@
 	class controller
 	{
         // Creates the default configs and pass them to the dao object.
- 		function __construct() 
+        /**
+         * @var config
+         */
+        private $object_config;
+        /**
+         * @var dao
+         */
+        private $dao;
+
+        function __construct() 
 		{
-			$this->objconfig = new config();
-			$this->dao = new dao($this->objconfig);
+			$this->object_config = new config();
+			$this->dao = new dao($this->object_config);
 
 		}
         // Handling requests from index.php
@@ -31,16 +40,21 @@
 
         // List users from users db.
         public function list_users(){
- 		    $result = $this->dao->selectUsers();
+            try {
+                @
+                $result = $this->dao->selectUsers();
+            } catch (Exception $e) {
+            }
             include "view/user_list.php";
         }
 
         // List advertisements from advertisements db with user names.
         public function list_advertisements(){
- 		    $result = $this->dao->selectAdvertisements();
+            try {
+                @
+                $result = $this->dao->selectAdvertisements();
+            } catch (Exception $e) {
+            }
             include "view/advertisement_list.php";
         }
     }
-		
-	
-?>
